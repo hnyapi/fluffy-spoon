@@ -1,12 +1,11 @@
 version: 1
 
-honeycomb_team: my-team # repo scoped OR could be near the env
+honeycomb_team: prod # repo scoped OR could be near the env
 
-deployment_gates: 
+deployment_gates:
   staging: # github env name
     queries:
-      - honeycomb_environment: qa # honeycomb env to query against
-        honeycomb_dataset: my-cool-application # optional, with no dataset indicating env-wide query
+      - honeycomb_environment: catfood # honeycomb env to query against
         spec: &queryspec '{
             "time_range": 1800,
             "calculations": [
@@ -19,11 +18,6 @@ deployment_gates:
                   "column": "status_code",
                   "op": "=",
                   "value": "500"
-              },
-              {
-                  "column": "build_id",
-                  "op": "=",
-                  "value": ${ GH_RUN_ID }
               }
             ],
             "filter_combination": "AND"
@@ -31,12 +25,3 @@ deployment_gates:
         threshold:
           operator: <
           value: 1
-
-    production:
-      queries:
-        - honeycomb_environment: staging
-          honeycomb_dataset: my-cool-application
-          spec: *queryspec
-          threshold:
-            operator: <
-            value: 1
