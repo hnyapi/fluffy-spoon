@@ -1,11 +1,11 @@
 version: 1
 
-honeycomb_team: prod # repo scoped OR could be near the env
+honeycomb_team: honeycomb # repo scoped OR could be near the env
 
 deployment_gates:
   staging: # github env name
     queries:
-      - honeycomb_environment: catfood # honeycomb env to query against
+      - honeycomb_environment: dev # honeycomb env to query against
         spec: &queryspec '{
             "time_range": 1800,
             "calculations": [
