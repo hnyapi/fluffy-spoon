@@ -5,8 +5,8 @@ honeycomb_team: api # repo scoped OR could be near the env
 deployment_gates:
   staging: # github env name
     queries:
-      - honeycomb_environment: brooke # honeycomb env to query against
-        spec: '{
+      - honeycomb_environment: development # honeycomb env to query against
+        spec: &queryspec '{
             "time_range": 1800,
             "calculations": [
               {
@@ -21,6 +21,13 @@ deployment_gates:
               }
             ]
           }'
+        threshold:
+          operator: '>'
+          value: 3
+  production:
+    queries:
+      - honeycomb_environment: brooke
+        spec: *queryspec
         threshold:
           operator: '>'
           value: 1
