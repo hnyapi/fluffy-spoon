@@ -1,11 +1,11 @@
 version: 1
 
-honeycomb_team: prod # repo scoped OR could be near the env
+honeycomb_team: api # repo scoped OR could be near the env
 
 deployment_gates:
   staging: # github env name
     queries:
-      - honeycomb_environment: catfood # honeycomb env to query against
+      - honeycomb_environment: brooke # honeycomb env to query against
         spec: '{
             "time_range": 1800,
             "calculations": [
@@ -19,9 +19,8 @@ deployment_gates:
                   "op": "=",
                   "value": "500"
               }
-            ],
-            "filter_combination": "AND"
+            ]
           }'
         threshold:
-          operator: <
+          operator: '>'
           value: 1
