@@ -16,7 +16,7 @@ deployment_gates:
             "filters": [
               {
                   "column": "any_error",
-                  "op": "does-not-exist",
+                  "op": "does-not-exist"
               }
             ]
           }'
