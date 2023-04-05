@@ -1,11 +1,11 @@
 version: 1
 
-honeycomb_team: api # repo scoped OR could be near the env
+honeycomb_team: prod # repo scoped OR could be near the env
 
 deployment_gates:
   staging: # github env name
     queries:
-      - honeycomb_environment: development # honeycomb env to query against
+      - honeycomb_environment: prod # honeycomb env to query against
         spec: &queryspec '{
             "time_range": 1800,
             "calculations": [
@@ -15,18 +15,17 @@ deployment_gates:
             ],
             "filters": [
               {
-                  "column": "status_code",
-                  "op": "=",
-                  "value": "500"
+                  "column": "any_error",
+                  "op": "does-not-exist",
               }
             ]
           }'
         threshold:
           operator: '>'
-          value: 3
+          value: 10
   production:
     queries:
-      - honeycomb_environment: brooke
+      - honeycomb_environment: prod
         spec: *queryspec
         threshold:
           operator: '>'
