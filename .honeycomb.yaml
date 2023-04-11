@@ -15,8 +15,9 @@ deployment_gates:
             ],
             "filters": [
               {
-                  "column": "any_error",
-                  "op": "does-not-exist"
+                  "column": "global.build_id",
+                  "op": "=",
+                  "value": ${ GITHUB_RUN_ID }
               }
             ]
           }'
