@@ -15,11 +15,17 @@ deployment_gates:
             ],
             "filters": [
               {
+                  "column": "response.status_code",
+                  "op": "=",
+                  "value": "500"
+              },
+              {
                   "column": "global.build_id",
                   "op": "=",
                   "value": "${GITHUB_RUN_ID}"
               }
-            ]
+            ],
+            "filter_combination": "AND"
           }'
         threshold:
           operator: '>'
