@@ -26,7 +26,7 @@ deployment_protection_rules:
           value: 10
   production:
     queries:
-      - honeycomb_environment: test
+      - honeycomb_environment: prod
         spec: *queryspec
         threshold:
           operator: '>'
