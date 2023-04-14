@@ -3,9 +3,9 @@ version: 1
 honeycomb_team: brooke # repo scoped OR could be near the env
 
 deployment_protection_rules:
-  stage: # github env name
+  staging: # github env name
     queries:
-      - honeycomb_environment: prod # honeycomb env to query against
+      - honeycomb_environment: stage # honeycomb env to query against
         spec: &queryspec '{
             "time_range": 1800,
             "calculations": [
@@ -26,7 +26,7 @@ deployment_protection_rules:
           value: 10
   production:
     queries:
-      - honeycomb_environment: prod
+      - honeycomb_environment: test
         spec: *queryspec
         threshold:
           operator: '>'
