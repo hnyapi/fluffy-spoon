@@ -18,12 +18,18 @@ deployment_protection_rules:
                   "column": "status_code",
                   "op": "=",
                   "value": "500"
+              },
+              {
+                  "column": "build_id",
+                  "op": "=",
+                  "value": "${GITHUB_RUN_ID}"
               }
-            ]
+            ],
+            "filter_combination": "AND"
           }'
         threshold:
           operator: '>'
-          value: 10
+          value: 3
   production:
     queries:
       - honeycomb_environment: prod
