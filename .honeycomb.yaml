@@ -1,6 +1,6 @@
 version: 1
 
-honeycomb_team: brooke # repo scoped OR could be near the env
+honeycomb_team: demo
 
 deployment_protection_rules:
   staging: # github env name
@@ -15,12 +15,12 @@ deployment_protection_rules:
             ],
             "filters": [
               {
-                  "column": "status_code",
+                  "column": "http.status_code",
                   "op": "=",
                   "value": "500"
               },
               {
-                  "column": "build_id",
+                  "column": "app.build_id",
                   "op": "=",
                   "value": "${GITHUB_RUN_ID}"
               }
