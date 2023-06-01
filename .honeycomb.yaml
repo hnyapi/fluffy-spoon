@@ -32,7 +32,7 @@ deployment_protection_rules:
           value: 3
   production:
     queries:
-      - honeycomb_environment: stage
+      - honeycomb_environment: ms-demo
         spec: *queryspec
         threshold:
           operator: '>'
