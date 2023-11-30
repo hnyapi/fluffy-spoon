@@ -1,6 +1,6 @@
 version: 1
 
-honeycomb_team: demo
+honeycomb_team: brooke-test
 
 deployment_protection_rules:
   staging: # github env name
@@ -15,12 +15,12 @@ deployment_protection_rules:
             ],
             "filters": [
               {
-                  "column": "http.status_code",
+                  "column": "status",
                   "op": "=",
                   "value": "500"
               },
               {
-                  "column": "app.build_id",
+                  "column": "build_num",
                   "op": "=",
                   "value": "${GITHUB_RUN_ID}"
               }
@@ -30,10 +30,3 @@ deployment_protection_rules:
         threshold:
           operator: '>'
           value: 3
-  production:
-    queries:
-      - honeycomb_environment: ms-demo
-        spec: *queryspec
-        threshold:
-          operator: '>'
-          value: 1
