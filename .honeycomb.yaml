@@ -7,7 +7,7 @@ deployment_protection_rules:
     queries:
       - honeycomb_environment: test # honeycomb env to query against
         spec: &queryspec '{
-            "time_range": 1800,
+            "time_range": 1000,
             "calculations": [
               {
                   "op": "COUNT"
