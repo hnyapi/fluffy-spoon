@@ -1,11 +1,11 @@
 version: 1
 
-honeycomb_team: brooke-test
+honeycomb_team: local
 
 deployment_protection_rules:
   staging: # github env name
     queries:
-      - honeycomb_environment: test # honeycomb env to query against
+      - honeycomb_environment: $classic$ # honeycomb env to query against
         spec: &queryspec '{
             "time_range": 1000,
             "calculations": [
