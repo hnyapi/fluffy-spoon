@@ -6,7 +6,6 @@ deployment_protection_rules:
   staging: # github env name
     queries:
       - honeycomb_environment: $classic$ # honeycomb env to query against
-        honeycomb_dataset: dev
         spec: &queryspec '{
             "time_range": 1000,
             "calculations": [
